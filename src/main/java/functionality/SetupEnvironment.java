@@ -1,8 +1,8 @@
-package main.java.functionality;
+package functionality;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-import main.java.dataprovider.ConfigFileReader;
+import dataprovider.ConfigFileReader;
 
 import static io.restassured.RestAssured.config;
 import static io.restassured.config.EncoderConfig.encoderConfig;

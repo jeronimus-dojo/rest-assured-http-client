@@ -1,6 +1,6 @@
-package main.java.functionality.endpoints;
+package functionality.endpoints;
 
-import static main.java.functionality.SetupEnvironment.buildEnv;
+import static functionality.SetupEnvironment.buildEnv;
 
 public class GetUser extends EndpointSuper {
     // Constructor without the required query param

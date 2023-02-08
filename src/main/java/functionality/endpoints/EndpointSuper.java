@@ -1,4 +1,4 @@
-package main.java.functionality.endpoints;
+package functionality.endpoints;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -10,7 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static io.restassured.RestAssured.given;
-import static main.java.functionality.ResponseSpecs.getCommonResponseSpec;
+import static functionality.ResponseSpecs.getCommonResponseSpec;
 
 public class EndpointSuper {
     protected RequestSpecification requestSpec;

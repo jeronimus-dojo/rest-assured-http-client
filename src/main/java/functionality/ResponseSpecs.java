@@ -1,4 +1,4 @@
-package main.java.functionality;
+package functionality;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
