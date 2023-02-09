@@ -1,9 +1,9 @@
-package test.java;
-
 import functionality.endpoints.GetUser;
+import models.user.Datum;
 import models.user.User;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static java.net.HttpURLConnection.*;
@@ -17,7 +17,7 @@ public class GetUserTest {
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     @Test
-    public void getUserHappyPath(){
+    public void getUserHappyPath() {
         GetUser userHappy = new GetUser("1", true);
 
         userHappy.writePayload();
@@ -31,6 +31,9 @@ public class GetUserTest {
         assertThat((userBody.getData().getEmail()), matchesPattern(VALID_EMAIL_ADDRESS_REGEX));
 
         assertThat(HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
+
+        Datum test = new Datum(1, "hello", "there", "this", "nice");
+        System.out.println( test );
     }
 
     @Test
@@ -38,6 +41,8 @@ public class GetUserTest {
         GetUser userNotExist = new GetUser("a", false);
         userNotExist.setGetCommonResponseSpec(false);
         userNotExist.doGET();
+
+
 
         assertThat(HTTP_NOT_FOUND, equalTo(userNotExist.getResponse().getStatusCode()));
     }

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import models.Support;
-import models.user.Data;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -16,7 +15,7 @@ import models.user.Data;
 public class User {
 
     @JsonProperty("data")
-    private Data data;
+    private Datum datum;
     @JsonProperty("support")
     private Support support;
 
@@ -29,23 +28,23 @@ public class User {
 
     /**
      *
-     * @param data
+     * @param datum
      * @param support
      */
-    public User(Data data, Support support) {
+    public User(Datum datum, Support support) {
         super();
-        this.data = data;
+        this.datum = datum;
         this.support = support;
     }
 
     @JsonProperty("data")
-    public Data getData() {
-        return data;
+    public Datum getData() {
+        return datum;
     }
 
     @JsonProperty("data")
-    public void setData(Data data) {
-        this.data = data;
+    public void setData(Datum datum) {
+        this.datum = datum;
     }
 
     @JsonProperty("support")

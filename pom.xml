@@ -53,7 +53,7 @@
             <artifactId>hamcrest</artifactId>
             <version>2.2</version>
         </dependency>
-        <!--        Used to data drive junit-->
+        <!--        Used to datum drive junit-->
         <dependency>
             <groupId>com.tngtech.java</groupId>
             <artifactId>junit-dataprovider</artifactId>
@@ -65,7 +65,7 @@
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
         </dependency>
-        <!--        Used to read in a .cvs file for test data-->
+        <!--        Used to read in a .cvs file for test datum-->
         <dependency>
             <groupId>pl.pragmatists</groupId>
             <artifactId>JUnitParams</artifactId>
