@@ -17,10 +17,10 @@ public class EndpointSuper {
     private Response payload = null;
     private ResponseBody body = null;
     private JsonPath payloadJson = null;
-    private Boolean getCommonResponseSpec = false;
+    private Boolean getCommonResponseSpec = true;
     protected String url;
 
-    public void getPayload(){
+    public void doGET(){
         requestSpec.log().everything(false);
         requestSpec.log().ifValidationFails();
         payload  =  given().
@@ -32,7 +32,7 @@ public class EndpointSuper {
         runCommonResponseSpec();
     }
 
-    public void postPayload(){
+    public void doPOST(){
         payload =   given().
                         spec(requestSpec).
                         log().all().
@@ -41,7 +41,7 @@ public class EndpointSuper {
         payloadJson = new JsonPath(payload.asString());
     }
 
-    public void deletePayload(){
+    public void doDELETE(){
         requestSpec.log().headers();
         payload =   given().
                         spec(requestSpec).
