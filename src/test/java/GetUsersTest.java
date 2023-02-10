@@ -1,5 +1,5 @@
 import functionality.endpoints.GetUsers;
-import models.user.Datum;
+import models.user.UserData;
 import models.user.Users;
 import org.junit.Test;
 
@@ -20,9 +20,9 @@ public class GetUsersTest {
         System.out.println(usersBody.getPerPage());
         System.out.println(usersBody.getSupport().getText());
 
-        List<Datum> bloop = usersBody.getData();
+        List<UserData> bloop = usersBody.getData();
 
-        for (Datum temp : bloop) {
+        for (UserData temp : bloop) {
             System.out.println(temp.getFirstName());
 
         }

@@ -28,7 +28,7 @@ public class Users {
     @JsonProperty("total_pages")
     private Integer totalPages;
     @JsonProperty("data")
-    private List<Datum> data;
+    private List<UserData> data;
     @JsonProperty("support")
     private Support support;
 
@@ -48,7 +48,7 @@ public class Users {
      * @param page
      * @param support
      */
-    public Users(Integer page, Integer perPage, Integer total, Integer totalPages, List<Datum> data, Support support) {
+    public Users(Integer page, Integer perPage, Integer total, Integer totalPages, List<UserData> data, Support support) {
         super();
         this.page = page;
         this.perPage = perPage;
@@ -99,12 +99,12 @@ public class Users {
     }
 
     @JsonProperty("data")
-    public List<Datum> getData() {
+    public List<UserData> getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(List<Datum> data) {
+    public void setData(List<UserData> data) {
         this.data = data;
     }
 

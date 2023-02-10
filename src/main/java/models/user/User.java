@@ -15,7 +15,7 @@ import models.Support;
 public class User {
 
     @JsonProperty("data")
-    private Datum datum;
+    private UserData userData;
     @JsonProperty("support")
     private Support support;
 
@@ -28,23 +28,23 @@ public class User {
 
     /**
      *
-     * @param datum
+     * @param userData
      * @param support
      */
-    public User(Datum datum, Support support) {
+    public User(UserData userData, Support support) {
         super();
-        this.datum = datum;
+        this.userData = userData;
         this.support = support;
     }
 
     @JsonProperty("data")
-    public Datum getData() {
-        return datum;
+    public UserData getData() {
+        return userData;
     }
 
     @JsonProperty("data")
-    public void setData(Datum datum) {
-        this.datum = datum;
+    public void setData(UserData userData) {
+        this.userData = userData;
     }
 
     @JsonProperty("support")

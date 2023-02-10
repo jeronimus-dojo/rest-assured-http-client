@@ -37,7 +37,13 @@ public class ConfigFileReader {
 
     public String getBaseUrl() {
         String baseUrl = properties.getProperty("base_url");
-        if(baseUrl != null) return baseUrl;
+        if (baseUrl != null) return baseUrl;
         else throw new RuntimeException("base_url not specified in configuration.properties file.");
+    }
+
+    public String getWritePayloadLocation() {
+        String WritePayloadLocation = properties.getProperty("write_payload_location");
+        if (WritePayloadLocation != null) return WritePayloadLocation;
+        else throw new RuntimeException("write_payload_location not specified in configuration.properties file.");
     }
 }

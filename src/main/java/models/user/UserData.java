@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "avatar"
 })
 @Generated("jsonschema2pojo")
-public class Datum {
+public class UserData {
 
     @JsonProperty("id")
     private Integer id;
@@ -31,7 +31,7 @@ public class Datum {
      * No args constructor for use in serialization
      *
      */
-    public Datum() {
+    public UserData() {
     }
 
     /**
@@ -42,7 +42,7 @@ public class Datum {
      * @param avatar
      * @param email
      */
-    public Datum(Integer id, String email, String firstName, String lastName, String avatar) {
+    public UserData(Integer id, String email, String firstName, String lastName, String avatar) {
         super();
         this.id = id;
         this.email = email;

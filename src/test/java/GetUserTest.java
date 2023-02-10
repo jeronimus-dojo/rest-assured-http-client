@@ -1,9 +1,8 @@
 import functionality.endpoints.GetUser;
-import models.user.Datum;
+import models.user.UserData;
 import models.user.User;
 import org.junit.Test;
 
-import java.util.List;
 import java.util.regex.Pattern;
 
 import static java.net.HttpURLConnection.*;
@@ -32,7 +31,7 @@ public class GetUserTest {
 
         assertThat(HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
 
-        Datum test = new Datum(1, "hello", "there", "this", "nice");
+        UserData test = new UserData(1, "hello", "there", "this", "nice");
         System.out.println( test );
     }
 
