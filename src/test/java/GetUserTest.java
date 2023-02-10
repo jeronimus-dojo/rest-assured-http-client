@@ -1,6 +1,6 @@
 import functionality.endpoints.GetUser;
-import models.user.UserData;
-import models.user.User;
+import models.response.UserData;
+import models.response.User;
 import org.junit.Test;
 
 import java.util.regex.Pattern;

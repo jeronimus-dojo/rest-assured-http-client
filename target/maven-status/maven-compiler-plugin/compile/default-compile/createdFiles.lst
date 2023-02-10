@@ -1,1 +1,3 @@
-models\user\UserData.class
+models\responseModels\user\Users.class
+models\responseModels\user\UserData.class
+models\responseModels\user\User.class

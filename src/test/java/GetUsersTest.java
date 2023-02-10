@@ -1,6 +1,6 @@
 import functionality.endpoints.GetUsers;
-import models.user.UserData;
-import models.user.Users;
+import models.response.UserData;
+import models.response.Users;
 import org.junit.Test;
 
 import java.util.List;

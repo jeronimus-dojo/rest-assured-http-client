@@ -1,4 +1,4 @@
-package models.user;
+package models.response;
 
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;

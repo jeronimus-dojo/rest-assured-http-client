@@ -1,4 +1,4 @@
-package models.user;
+package models.response;
 
 import java.util.List;
 import javax.annotation.Generated;

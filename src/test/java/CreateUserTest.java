@@ -5,7 +5,7 @@ public class CreateUserTest
 {
     @Test
     public void createUserHappyPath() {
-        CreateUser userHappy = new CreateUser("11", true);
+        CreateUser userHappy = new CreateUser(true);
 
         userHappy.writePayload();
 

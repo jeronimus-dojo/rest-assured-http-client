@@ -33,6 +33,7 @@ public class EndpointSuper {
     }
 
     public void doPOST(){
+        requestSpec.log().everything(true);
         payload =   given().
                         spec(requestSpec).
                         log().all().
