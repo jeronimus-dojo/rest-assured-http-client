@@ -1,4 +1,0 @@
-models\getUser\request\UserPost.class
-models\getUser\response\UsersGet.class
-models\getUser\response\UserGet.class
-models\getUser\response\UserDataGet.class
