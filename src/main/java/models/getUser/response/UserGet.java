@@ -1,4 +1,4 @@
-package models.response;
+package models.getUser.response;
 
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -12,10 +12,10 @@ import models.Support;
         "support"
 })
 @Generated("jsonschema2pojo")
-public class User {
+public class UserGet {
 
     @JsonProperty("data")
-    private UserData userData;
+    private UserDataGet userDataGet;
     @JsonProperty("support")
     private Support support;
 
@@ -23,28 +23,28 @@ public class User {
      * No args constructor for use in serialization
      *
      */
-    public User() {
+    public UserGet() {
     }
 
     /**
      *
-     * @param userData
+     * @param userDataGet
      * @param support
      */
-    public User(UserData userData, Support support) {
+    public UserGet(UserDataGet userDataGet, Support support) {
         super();
-        this.userData = userData;
+        this.userDataGet = userDataGet;
         this.support = support;
     }
 
     @JsonProperty("data")
-    public UserData getData() {
-        return userData;
+    public UserDataGet getData() {
+        return userDataGet;
     }
 
     @JsonProperty("data")
-    public void setData(UserData userData) {
-        this.userData = userData;
+    public void setData(UserDataGet userDataGet) {
+        this.userDataGet = userDataGet;
     }
 
     @JsonProperty("support")

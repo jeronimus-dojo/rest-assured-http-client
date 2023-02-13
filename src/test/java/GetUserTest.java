@@ -1,6 +1,6 @@
 import functionality.endpoints.GetUser;
-import models.response.UserData;
-import models.response.User;
+import models.getUser.response.UserDataGet;
+import models.getUser.response.UserGet;
 import org.junit.Test;
 
 import java.util.regex.Pattern;
@@ -21,17 +21,17 @@ public class GetUserTest {
 
         userHappy.writePayload();
 
-        User userBody = userHappy.getBody().as(User.class);
+        UserGet userGetBody = userHappy.getBody().as(UserGet.class);
 
-        assertThat("George", equalTo(userBody.getData().getFirstName()));
-        assertThat("Bluth", equalTo(userBody.getData().getLastName()));
+        assertThat("George", equalTo(userGetBody.getData().getFirstName()));
+        assertThat("Bluth", equalTo(userGetBody.getData().getLastName()));
 
 
-        assertThat((userBody.getData().getEmail()), matchesPattern(VALID_EMAIL_ADDRESS_REGEX));
+        assertThat((userGetBody.getData().getEmail()), matchesPattern(VALID_EMAIL_ADDRESS_REGEX));
 
         assertThat(HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
 
-        UserData test = new UserData(1, "hello", "there", "this", "nice");
+        UserDataGet test = new UserDataGet(1, "hello", "there", "this", "nice");
         System.out.println( test );
     }
 

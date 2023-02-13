@@ -1,6 +1,6 @@
 import functionality.endpoints.GetUsers;
-import models.response.UserData;
-import models.response.Users;
+import models.getUser.response.UserDataGet;
+import models.getUser.response.UsersGet;
 import org.junit.Test;
 
 import java.util.List;
@@ -16,18 +16,18 @@ public class GetUsersTest {
 
         usersHappy.writePayload();
 
-        Users usersBody = usersHappy.getBody().as(Users.class);
-        System.out.println(usersBody.getPerPage());
-        System.out.println(usersBody.getSupport().getText());
+        UsersGet usersGetBody = usersHappy.getBody().as(UsersGet.class);
+        System.out.println(usersGetBody.getPerPage());
+        System.out.println(usersGetBody.getSupport().getText());
 
-        List<UserData> bloop = usersBody.getData();
+        List<UserDataGet> bloop = usersGetBody.getData();
 
-        for (UserData temp : bloop) {
+        for (UserDataGet temp : bloop) {
             System.out.println(temp.getFirstName());
 
         }
 
-        assertThat(usersBody.getPerPage(), equalTo(bloop.size()));
+        assertThat(usersGetBody.getPerPage(), equalTo(bloop.size()));
 
     }
 }

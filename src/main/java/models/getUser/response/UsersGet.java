@@ -1,4 +1,4 @@
-package models.response;
+package models.getUser.response;
 
 import java.util.List;
 import javax.annotation.Generated;
@@ -17,7 +17,7 @@ import models.Support;
         "support"
 })
 @Generated("jsonschema2pojo")
-public class Users {
+public class UsersGet {
 
     @JsonProperty("page")
     private Integer page;
@@ -28,7 +28,7 @@ public class Users {
     @JsonProperty("total_pages")
     private Integer totalPages;
     @JsonProperty("data")
-    private List<UserData> data;
+    private List<UserDataGet> data;
     @JsonProperty("support")
     private Support support;
 
@@ -36,7 +36,7 @@ public class Users {
      * No args constructor for use in serialization
      *
      */
-    public Users() {
+    public UsersGet() {
     }
 
     /**
@@ -48,7 +48,7 @@ public class Users {
      * @param page
      * @param support
      */
-    public Users(Integer page, Integer perPage, Integer total, Integer totalPages, List<UserData> data, Support support) {
+    public UsersGet(Integer page, Integer perPage, Integer total, Integer totalPages, List<UserDataGet> data, Support support) {
         super();
         this.page = page;
         this.perPage = perPage;
@@ -99,12 +99,12 @@ public class Users {
     }
 
     @JsonProperty("data")
-    public List<UserData> getData() {
+    public List<UserDataGet> getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(List<UserData> data) {
+    public void setData(List<UserDataGet> data) {
         this.data = data;
     }
 

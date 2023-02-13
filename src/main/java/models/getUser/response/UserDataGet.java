@@ -1,4 +1,4 @@
-package models.response;
+package models.getUser.response;
 
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "avatar"
 })
 @Generated("jsonschema2pojo")
-public class UserData {
+public class UserDataGet {
 
     @JsonProperty("id")
     private Integer id;
@@ -31,7 +31,7 @@ public class UserData {
      * No args constructor for use in serialization
      *
      */
-    public UserData() {
+    public UserDataGet() {
     }
 
     /**
@@ -42,7 +42,7 @@ public class UserData {
      * @param avatar
      * @param email
      */
-    public UserData(Integer id, String email, String firstName, String lastName, String avatar) {
+    public UserDataGet(Integer id, String email, String firstName, String lastName, String avatar) {
         super();
         this.id = id;
         this.email = email;
