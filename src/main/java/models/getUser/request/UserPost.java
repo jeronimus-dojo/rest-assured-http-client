@@ -16,8 +16,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @Generated("jsonschema2pojo")
 public class UserPost {
 
-    @JsonProperty("id")
-    public Integer id;
     @JsonProperty("email")
     public String email;
     @JsonProperty("first_name")
@@ -42,9 +40,8 @@ public class UserPost {
      * @param avatar
      * @param email
      */
-    public UserPost(Integer id, String email, String firstName, String lastName, String avatar) {
+    public UserPost(String email, String firstName, String lastName, String avatar) {
         super();
-        this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;

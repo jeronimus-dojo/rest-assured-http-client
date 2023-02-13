@@ -13,7 +13,7 @@ public class DeleteUserTest {
 
     @Before
     public void createUserToDelete() {
-        UserPost body = new UserPost(100, "rest@assured.com", "resting", "full", "https://reqres.in/img/faces/1-image.jpg");
+        UserPost body = new UserPost("rest@assured.com", "resting", "full", "https://reqres.in/img/faces/1-image.jpg");
         CreateUser userHappy = new CreateUser(body, true);
 
         assertThat("Got correct HTTP status code", userHappy.getResponse().getStatusCode(), equalTo(HTTP_CREATED));

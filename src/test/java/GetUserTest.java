@@ -37,7 +37,7 @@ public class GetUserTest {
 
     @Test
     public void getUserThatDoesNotExist() {
-        GetUser userNotExist = new GetUser("a", false);
+        GetUser userNotExist = new GetUser("99999", false);
         userNotExist.setGetCommonResponseSpec(false);
         userNotExist.doGET();
 

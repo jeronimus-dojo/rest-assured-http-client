@@ -1,5 +1,6 @@
 package functionality.endpoints;
 
+import com.atlassian.oai.validator.restassured.OpenApiValidationFilter;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
@@ -20,10 +21,14 @@ public class EndpointSuper {
     private Boolean getCommonResponseSpec = true;
     protected String url;
 
+    private static final String REQRES_OPENAPI_YAML = "reqres_openapi.yaml";
+    private static final OpenApiValidationFilter validationFilter = new OpenApiValidationFilter(REQRES_OPENAPI_YAML);;
+
     public void doGET(){
         requestSpec.log().everything(false);
         requestSpec.log().ifValidationFails();
         payload  =  given().
+                        filter(validationFilter).
                         spec(requestSpec).
                         log().all().
                     when().
@@ -35,7 +40,8 @@ public class EndpointSuper {
     public void doPOST(){
         requestSpec.log().everything(true);
         payload =   given().
-                        spec(requestSpec).
+                filter(validationFilter).
+                spec(requestSpec).
                         log().all().
                     when().
                         post(url);
@@ -45,6 +51,7 @@ public class EndpointSuper {
     public void doDELETE(){
         requestSpec.log().headers();
         payload =   given().
+                        filter(validationFilter).
                         spec(requestSpec).
                         log().all().
                     when().
