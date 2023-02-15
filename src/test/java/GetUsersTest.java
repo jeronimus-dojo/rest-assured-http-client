@@ -5,29 +5,44 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static java.net.HttpURLConnection.HTTP_OK;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GetUsersTest {
 
     @Test
-    public void getAllUsersHappyPath() {
-        GetUsers usersHappy = new GetUsers(true);
+    public void getUsersWithValidPageAndPerPage() {
+        int page = 1;
+        int perPage = 5;
 
-        usersHappy.writePayload();
+        GetUsers users = new GetUsers(Integer.toString(page), Integer.toString(perPage), true);
+        assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(users.getResponse().getStatusCode()));
 
-        UsersGet usersGetBody = usersHappy.getBody().as(UsersGet.class);
-        System.out.println(usersGetBody.getPerPage());
-        System.out.println(usersGetBody.getSupport().getText());
+        users.writePayload();
 
-        List<UserDataGet> bloop = usersGetBody.getData();
+        UsersGet usersPayload = users.getBody().as(UsersGet.class);
 
-        for (UserDataGet temp : bloop) {
+        assertThat("Got the correct page back", page, equalTo(usersPayload.getPage()));
+        assertThat("Got the correct per_page back", perPage, equalTo(usersPayload.getPerPage()));
+
+        List<UserDataGet> usersList = usersPayload.getData();
+        assertThat("Correct number of users were returned", perPage, equalTo(usersList.size()));
+
+        for (UserDataGet temp : usersList) {
             System.out.println(temp.getFirstName());
-
         }
+    }
+    @Test
+    public void getUsersWithNoPageAndPerPage() {
+        GetUsers users = new GetUsers(true);
+        assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(users.getResponse().getStatusCode()));
 
-        assertThat(usersGetBody.getPerPage(), equalTo(bloop.size()));
+        users.writePayload();
 
+        UsersGet usersPayload = users.getBody().as(UsersGet.class);
+
+        List<UserDataGet> usersList = usersPayload.getData();
+        assertThat("Number of users were returned matches per_page in payload", usersPayload.getPerPage(), equalTo(usersList.size()));
     }
 }

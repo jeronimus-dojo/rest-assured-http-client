@@ -18,20 +18,19 @@ public class GetUserTest {
     @Test
     public void getUserHappyPath() {
         GetUser userHappy = new GetUser("1", true);
+        assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
 
         userHappy.writePayload();
 
-        UserGet userGetBody = userHappy.getBody().as(UserGet.class);
+        UserDataGet UserDataPayload = userHappy.getBody().as(UserGet.class).getData();
 
-        assertThat("George", equalTo(userGetBody.getData().getFirstName()));
-        assertThat("Bluth", equalTo(userGetBody.getData().getLastName()));
+        assertThat("First name is as expected","George", equalTo(UserDataPayload.getFirstName()));
+        assertThat("First name is as expected","Bluth", equalTo(UserDataPayload.getLastName()));
 
-        assertThat((userGetBody.getData().getEmail()), matchesPattern(VALID_EMAIL_ADDRESS_REGEX));
+        assertThat("Email is valid", (UserDataPayload.getEmail()), matchesPattern(VALID_EMAIL_ADDRESS_REGEX));
+        assertThat("Email is as expected", "george.bluth@reqres.in", equalTo(UserDataPayload.getEmail()));
 
-        assertThat(HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
-
-        UserDataGet test = new UserDataGet(1, "hello", "there", "this", "nice");
-        System.out.println( test );
+        assertThat("Avatar is as expected", "https://reqres.in/img/faces/1-image.jpg", equalTo(UserDataPayload.getAvatar()));
     }
 
     @Test
