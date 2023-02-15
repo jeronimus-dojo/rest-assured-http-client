@@ -26,7 +26,6 @@ public class GetUserTest {
         assertThat("George", equalTo(userGetBody.getData().getFirstName()));
         assertThat("Bluth", equalTo(userGetBody.getData().getLastName()));
 
-
         assertThat((userGetBody.getData().getEmail()), matchesPattern(VALID_EMAIL_ADDRESS_REGEX));
 
         assertThat(HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
@@ -41,9 +40,6 @@ public class GetUserTest {
         userNotExist.setGetCommonResponseSpec(false);
         userNotExist.doGET();
 
-
-
         assertThat(HTTP_NOT_FOUND, equalTo(userNotExist.getResponse().getStatusCode()));
     }
-
 }

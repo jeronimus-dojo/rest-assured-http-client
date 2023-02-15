@@ -20,6 +20,13 @@ components:
           type: string
         avatar:
           type: string
+    Support:
+      type: object
+      properties:
+        url:
+          type: string
+        text:
+          type: string
 paths:
   /users:
     get:
@@ -29,10 +36,12 @@ paths:
           name: page
           schema:
             type: integer
+            example: 1
         - in: query
           name: per_page
           schema:
             type: integer
+            example: 5
       responses:
         '200':
           description: Success
@@ -54,12 +63,8 @@ paths:
                     items:
                       $ref: "#/components/schemas/User"
                   support:
-                    type: object
-                    properties:
-                      url:
-                        type: string
-                      text:
-                        type: string
+                    $ref: "#/components/schemas/Support"
+
     post:
       summary: Creates a new user
       requestBody:
@@ -81,6 +86,11 @@ paths:
                 avatar:
                   type: string
                   description: username of user
+              example:
+                email: bob@bob.com
+                first_name: Bob
+                last_name: Smith
+                avatar: https://reqres.in/img/faces/7-image.jpg
         required: true
       responses:
         '201':
@@ -116,6 +126,7 @@ paths:
           name: id
           schema:
             type: integer
+            example: 1
           required: true
       responses:
         '200':
@@ -128,12 +139,7 @@ paths:
                   data:
                     $ref: "#/components/schemas/User"
                   support:
-                    type: object
-                    properties:
-                      url:
-                        type: string
-                      text:
-                        type: string
+                    $ref: "#/components/schemas/Support"
         '404':
           description: Unknown user
     delete:
@@ -143,8 +149,8 @@ paths:
           name: id
           schema:
             type: integer
+            example: 100
           required: true
       responses:
         '204':
           description: Success
-
