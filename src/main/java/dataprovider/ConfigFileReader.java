@@ -12,7 +12,7 @@ public class ConfigFileReader {
 
     private ConfigFileReader() {
         BufferedReader reader;
-        String propertyFilePath = "src/main/resources/configuration.properties";
+        String propertyFilePath = "src/test/resources/configuration.properties";
         try {
             reader = new BufferedReader((new FileReader(propertyFilePath)));
             properties = new Properties();
