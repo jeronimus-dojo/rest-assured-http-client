@@ -27,35 +27,41 @@ public class EndpointSuper {
     public void doGET(){
         requestSpec.log().everything(false);
         requestSpec.log().ifValidationFails();
-        payload  =  given().
-                        filter(validationFilter).
-                        spec(requestSpec).
-                        log().all().
-                    when().
-                        get(url); // can't do any more method chaining as payload needs a Response returned to it
+        payload  =
+                given().
+                    filter(validationFilter).
+                    spec(requestSpec).
+                    log().all().
+                when().
+                    get(url); // can't do any more method chaining as payload needs a Response returned to it
+
         payloadJson = new JsonPath(payload.asString());
         runCommonResponseSpec();
     }
 
     public void doPOST(){
         requestSpec.log().everything(true);
-        payload =   given().
-                filter(validationFilter).
-                spec(requestSpec).
-                        log().all().
-                    when().
-                        post(url);
+        payload =
+                given().
+                    filter(validationFilter).
+                    spec(requestSpec).
+                    log().all().
+                when().
+                    post(url);
+
         payloadJson = new JsonPath(payload.asString());
     }
 
     public void doDELETE(){
         requestSpec.log().headers();
-        payload =   given().
-                        filter(validationFilter).
-                        spec(requestSpec).
-                        log().all().
-                    when().
-                        delete(url);
+        payload =
+                given().
+                    filter(validationFilter).
+                    spec(requestSpec).
+                    log().all().
+                when().
+                    delete(url);
+
         payloadJson = new JsonPath(payload.asString());
     }
 
