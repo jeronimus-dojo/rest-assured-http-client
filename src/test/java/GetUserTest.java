@@ -18,15 +18,15 @@ public class GetUserTest {
 
     @Test
     public void getUserHappyPath() {
-        GetUser userHappy = new GetUser("1", true);
-        userHappy.writePayload();
+        GetUser user = new GetUser("1", true);
+        user.writePayload();
 
-        assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
+        assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(user.getResponse().getStatusCode()));
 
-        assertThat("JSON Schema is correct", userHappy.getResponse().asString(), matchesJsonSchemaInClasspath("json_schema_get_user.json"));
+        assertThat("JSON Schema is correct", user.getResponse().asString(), matchesJsonSchemaInClasspath("jsonSchema/json_schema_get_user.json"));
 
         // Use POJOs to verify the payload
-        UserDataGet UserDataPayload = userHappy.getBody().as(UserGet.class).getData();
+        UserDataGet UserDataPayload = user.getBody().as(UserGet.class).getData();
 
         assertThat("First name is as expected","George", equalTo(UserDataPayload.getFirstName()));
         assertThat("First name is as expected","Bluth", equalTo(UserDataPayload.getLastName()));
@@ -39,10 +39,10 @@ public class GetUserTest {
 
     @Test
     public void getUserThatDoesNotExist() {
-        GetUser userNotExist = new GetUser("99999", false);
-        userNotExist.setGetCommonResponseSpec(false);
-        userNotExist.doGET();
+        GetUser user = new GetUser("99999", false);
+        user.setGetCommonResponseSpec(false);
+        user.doGET();
 
-        assertThat(HTTP_NOT_FOUND, equalTo(userNotExist.getResponse().getStatusCode()));
+        assertThat(HTTP_NOT_FOUND, equalTo(user.getResponse().getStatusCode()));
     }
 }

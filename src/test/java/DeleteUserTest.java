@@ -14,16 +14,16 @@ public class DeleteUserTest {
     @Before
     public void createUserToDelete() {
         UserPost body = new UserPost("rest@assured.com", "resting", "full", "https://reqres.in/img/faces/1-image.jpg");
-        CreateUser userHappy = new CreateUser(body, true);
+        CreateUser user = new CreateUser(body, true);
 
-        assertThat("Got correct HTTP status code", userHappy.getResponse().getStatusCode(), equalTo(HTTP_CREATED));
+        assertThat("Got correct HTTP status code", user.getResponse().getStatusCode(), equalTo(HTTP_CREATED));
     }
 
     @Test
     public void  deleteUserHappyPath() {
-        DeleteUser userDelete =  new DeleteUser("100", true);
+        DeleteUser user =  new DeleteUser("100", true);
 
-        assertThat("Got correct HTTP status code", userDelete.getResponse().getStatusCode(), equalTo(HTTP_NO_CONTENT));
+        assertThat("Got correct HTTP status code", user.getResponse().getStatusCode(), equalTo(HTTP_NO_CONTENT));
 
     }
 }

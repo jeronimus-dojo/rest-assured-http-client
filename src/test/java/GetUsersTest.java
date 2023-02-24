@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -12,14 +13,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class GetUsersTest {
 
     @Test
-    public void getUsersWithValidPageAndPerPage() {
+    public void getUsersWithPageAndPerPage() {
         int page = 1;
         int perPage = 5;
 
-        GetUsers users = new GetUsers(Integer.toString(page), Integer.toString(perPage), true);
+        GetUsers users = new GetUsers("1", "5", true);
+        users.writePayload();
+
         assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(users.getResponse().getStatusCode()));
 
-        users.writePayload();
+        assertThat("JSON Schema is correct", users.getResponse().asString(), matchesJsonSchemaInClasspath("jsonSchema/json_schema_get_users.json"));
 
         UsersGet usersPayload = users.getBody().as(UsersGet.class);
 
@@ -34,7 +37,7 @@ public class GetUsersTest {
         }
     }
     @Test
-    public void getUsersWithNoPageAndPerPage() {
+    public void getUsersWithoutPageAndPerPage() {
         GetUsers users = new GetUsers(true);
         assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(users.getResponse().getStatusCode()));
 
