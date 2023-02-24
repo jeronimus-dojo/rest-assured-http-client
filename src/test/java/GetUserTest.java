@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.regex.Pattern;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static java.net.HttpURLConnection.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,10 +19,13 @@ public class GetUserTest {
     @Test
     public void getUserHappyPath() {
         GetUser userHappy = new GetUser("1", true);
-        assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
-
         userHappy.writePayload();
 
+        assertThat("Got the correct HTTP Status code back", HTTP_OK, equalTo(userHappy.getResponse().getStatusCode()));
+
+        assertThat("JSON Schema is correct", userHappy.getResponse().asString(), matchesJsonSchemaInClasspath("json_schema_get_user.json"));
+
+        // Use POJOs to verify the payload
         UserDataGet UserDataPayload = userHappy.getBody().as(UserGet.class).getData();
 
         assertThat("First name is as expected","George", equalTo(UserDataPayload.getFirstName()));

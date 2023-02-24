@@ -68,10 +68,13 @@ public class EndpointSuper {
     public JsonPath getPayloadJson(){
         return this.payloadJson;
     }
+
     public Response getResponse(){
         return this.payload;
     }
+
     public ResponseBody getBody() { return this.payload.getBody(); }
+
     public void setGetCommonResponseSpec(boolean setTo) {getCommonResponseSpec = setTo;}
 
     private void runCommonResponseSpec() {

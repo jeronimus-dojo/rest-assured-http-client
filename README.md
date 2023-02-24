@@ -8,4 +8,4 @@ To see it in action from the terminal run **mvn test**
 
 There are a few basic assertions for each endpoint.
 
-Each endpoint is also verified against the OpenAPI spec.
+Each endpoint is also verified against reqres OpenAPI specification.
