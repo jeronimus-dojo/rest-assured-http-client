@@ -7,6 +7,8 @@ import io.restassured.response.ResponseBody;
 import io.restassured.specification.FilterableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 
+import dataprovider.ConfigFileReader;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -91,7 +93,8 @@ public class EndpointSuper {
     }
 
     public void writePayload() {
-        try (FileWriter file = new FileWriter("E:\\Selenium\\Java\\response_A.json")) {
+        ConfigFileReader config = ConfigFileReader.getInstance();
+        try (FileWriter file = new FileWriter(config.getWritePayloadLocation())) {
             file.write(payloadJson.prettyPrint());
             file.flush();
         }
