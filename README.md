@@ -1,4 +1,4 @@
-# rest-assured-reqres
+# rest-assured-http-client
 
 A REST Assured framework that use the **Page Object Model** design pattern in an API context, that is each endpoint is a class.
 
