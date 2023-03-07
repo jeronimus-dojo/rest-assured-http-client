@@ -30,4 +30,12 @@ public class CreateUserTest
 
         assertThat("JSON Schema is correct", user.getResponse().asString(), matchesJsonSchemaInClasspath("jsonSchema/json_schema_create_user.json"));
     }
+
+    @Test
+    public void removeHostHeader() {
+        UserPost body = new UserPost("rest@assured.com", "resting", "full", "https://reqres.in/img/faces/1-image.jpg");
+        CreateUser user = new CreateUser(body, false);
+        user.removeHeader("Host");
+        user.doPOST();
+    }
 }

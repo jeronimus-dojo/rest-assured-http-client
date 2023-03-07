@@ -154,3 +154,49 @@ paths:
       responses:
         '204':
           description: Success
+    put:
+      summary: Updates a user
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            example: 1
+          required: true
+      requestBody:
+        description: details of the user to update
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: New name of user
+                job:
+                  type: string
+                  description: New job of user
+              example:
+                name: Nigel Nelson
+                job: Senior Test Tech Worker
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: New name of user
+                  job:
+                    type: string
+                    description: New job of user
+                  updatedAt:
+                    type: string
+                    description: date time stamp on which the update occurred
+                example:
+                  name: Nigel Nelson
+                  job: Senior Test Tech Worker
+                  updatedAt: '2023-03-07T09:17:54.298Z'

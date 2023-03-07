@@ -67,6 +67,18 @@ public class EndpointSuper {
         payloadJson = new JsonPath(payload.asString());
     }
 
+    public void doPUT() {
+        requestSpec.log().ifValidationFails();
+        payload =
+                given().
+                    filter(validationFilter).
+                    spec(requestSpec).
+                when().
+                    put(url);
+
+        payloadJson = new JsonPath(payload.asString());
+    }
+
     public JsonPath getPayloadJson(){
         return this.payloadJson;
     }
